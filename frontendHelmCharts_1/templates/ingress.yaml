@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: yap-ingress 
+  labels:
+spec:
+  ingressClassName: nginx 
+  rules:
+    - host: k8s.labowstin.com 
+      http:
+        paths:
+          - path: /callbackend1
+            pathType: Prefix
+            backend:
+              service:
+                name: fe
+                port:
+                  number: 80
+          - path: /callbackend2
+            pathType: Prefix
+            backend:
+              service:
+                name: fe
+                port:
+                  number: 80
+          - path: /sumbackends
+            pathType: Prefix
+            backend:
+              service:
+                name: fe
+                port:
+                  number: 80
